@@ -12,13 +12,14 @@ public final class GUIService {
 	
 	private static GUI gui;
 	
-	private GUIService() {
+	private GUIService(GUI gui) {
+		this.gui = gui;
 		loader = ServiceLoader.load(Plugin.class);
 	}
 
 	public static synchronized GUIService getInstance() {
 		if (service == null) {
-			service = new GUIService();
+			service = new GUIService(gui);
 		}
 		return service;
 	}
