@@ -27,6 +27,14 @@ public final class GUIService {
 		return gui.getWordIterator();
 	}
 	
+	public String getOriginalText(){
+		return gui.getOriginalText();
+	}
+	
+	public void setOriginalText(String text){
+		this.gui.setOriginalText(text);
+	}
+	
 	public String getGUIText(){
 		return gui.getText();
 	}
