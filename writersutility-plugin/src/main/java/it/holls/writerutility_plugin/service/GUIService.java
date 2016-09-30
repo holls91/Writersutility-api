@@ -12,14 +12,13 @@ public final class GUIService {
 	
 	private static GUI gui;
 	
-	private GUIService(GUI gui) {
-		this.gui = gui;
+	private GUIService() {
 		loader = ServiceLoader.load(Plugin.class);
 	}
 
 	public static synchronized GUIService getInstance() {
 		if (service == null) {
-			service = new GUIService(gui);
+			service = new GUIService();
 		}
 		return service;
 	}
@@ -30,5 +29,13 @@ public final class GUIService {
 	
 	public String getGUIText(){
 		return gui.getText();
+	}
+	
+	public void setGUI(GUI gui){
+		this.gui = gui;
+	}
+	
+	public void setGUIText(String text){
+		this.gui.setText(text);
 	}
 }
