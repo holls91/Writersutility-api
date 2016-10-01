@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import it.holls.writersutilityM.ui.GUI;
-import it.holls.writerutility_plugin.service.GUIService;
+import it.holls.writersutility_plugin.service.GUIService;
 
 public class ServiceTest {
 	

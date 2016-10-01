@@ -1,9 +1,10 @@
-package it.holls.writerutility_plugin.service;
+package it.holls.writersutility_plugin.service;
 
 import java.util.ServiceLoader;
 
 import it.holls.writersutilityM.iterator.WordIterator;
 import it.holls.writersutilityM.ui.GUI;
+import it.holls.writersutilityM.utils.Utils;
 import it.holls.writersutility_plugin.plugin.Plugin;
 
 public final class GUIService {
@@ -28,22 +29,30 @@ public final class GUIService {
 	}
 	
 	public String getOriginalText(){
-		return gui.getOriginalText();
+		return checkAndConvertToHTML(gui.getOriginalText());
 	}
 	
 	public void setOriginalText(String text){
-		this.gui.setOriginalText(text);
+		GUIService.gui.setOriginalText(text);
 	}
 	
 	public String getGUIText(){
-		return gui.getText();
-	}
-	
-	public void setGUI(GUI gui){
-		this.gui = gui;
+		return checkAndConvertToHTML(gui.getText());
 	}
 	
 	public void setGUIText(String text){
-		this.gui.setText(text);
+		GUIService.gui.setText(text);
 	}
+	
+	public void setGUI(GUI gui){
+		GUIService.gui = gui;
+	}
+	
+	private String checkAndConvertToHTML(String inputText){
+		if(inputText.startsWith("<html>") && inputText.endsWith("</html>"))
+			return inputText;
+		else
+			return Utils.createHtmlFromText(inputText);
+	}
+
 }
