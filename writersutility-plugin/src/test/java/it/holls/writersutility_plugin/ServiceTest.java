@@ -16,13 +16,10 @@ public class ServiceTest {
 		GUIService guiService = GUIService.getInstance();
 		guiService.setGUI(gui);
 		
-		assertEquals(guiService.getGUIText(), "");
+		guiService.setGUIText("<html><head></head><body><p>Prova prova</p></body></html>");
 		
-		guiService.setGUIText("Prova prova");
-		
-		assertEquals(guiService.getGUIText(), "Prova prova");
-		assertEquals(gui.getText(), "Prova prova");
-		
+		assertEquals(guiService.getGUIText().replaceAll("\n", "").replaceAll(">(\\s)*", ">").replaceAll("(\\s)*<", "<"), "<html><head></head><body><p>Prova prova</p></body></html>");
+		assertEquals(gui.getText().replaceAll("\n", "").replaceAll(">(\\s)*", ">").replaceAll("(\\s)*<", "<"), "<html><head></head><body><p>Prova prova</p></body></html>");
 		
 	}
 }
