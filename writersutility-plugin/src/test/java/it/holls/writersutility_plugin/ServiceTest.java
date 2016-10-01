@@ -44,4 +44,23 @@ public class ServiceTest {
 		assertEquals(gui.getText().replaceAll("\n", "").replaceAll(">(\\s)*", ">").replaceAll("(\\s)*<", "<"), "<html><head></head><body><p>Prova prova 2</p></body></html>");
 		assertEquals(guiService.getOriginalText(), "<html><head></head><body><p>Prova prova</p></body></html>");
 	}
+	
+	@Test
+	public void checkEditabilityForXHTMLCode(){
+		GUI gui = new GUI();
+		gui.setFileLoaded(true);
+		
+		GUIService guiService = GUIService.getInstance();
+		guiService.setGUI(gui);
+		
+		guiService.setOriginalText("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova</p></body></html>");
+		
+		assertEquals(guiService.getOriginalText(), "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova</p></body></html>");
+		
+		guiService.setGUIText("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova 2</p></body></html>");
+		
+		assertEquals(guiService.getGUIText().replaceAll("\n", "").replaceAll(">(\\s)*", ">").replaceAll("(\\s)*<", "<"), "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova 2</p></body></html>");
+		assertEquals(gui.getText().replaceAll("\n", "").replaceAll(">(\\s)*", ">").replaceAll("(\\s)*<", "<"), "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova 2</p></body></html>");
+		assertEquals(guiService.getOriginalText(), "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html><head></head><body><p>Prova prova</p></body></html>");
+	}
 }

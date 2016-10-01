@@ -49,7 +49,7 @@ public final class GUIService {
 	}
 	
 	private String checkAndConvertToHTML(String inputText){
-		if(inputText.startsWith("<html>"))
+		if(inputText.startsWith("<html>") || inputText.startsWith("<!DOCTYPE"))
 			return inputText;
 		else
 			return Utils.createHtmlFromText(inputText);
