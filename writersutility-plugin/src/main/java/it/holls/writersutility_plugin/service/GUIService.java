@@ -1,5 +1,6 @@
 package it.holls.writersutility_plugin.service;
 
+import java.util.Iterator;
 import java.util.ServiceLoader;
 
 import it.holls.writersutilityM.iterator.WordIterator;
@@ -22,6 +23,10 @@ public final class GUIService {
 			service = new GUIService();
 		}
 		return service;
+	}
+	
+	public Iterator<Plugin> getPluginIterator(){
+		return loader.iterator();
 	}
 	
 	public WordIterator getWordIterator(){
