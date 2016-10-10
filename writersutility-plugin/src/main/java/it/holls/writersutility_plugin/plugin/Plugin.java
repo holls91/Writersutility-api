@@ -1,17 +1,26 @@
 package it.holls.writersutility_plugin.plugin;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public interface Plugin {
+import it.holls.writersutility_plugin.service.GUIObserver;
 
-	public String getKey();
-	public String getName();
-	public String getTooltip();
-	public JPanel getPanel();
-	public ActionListener getAction();
-	public JMenuItem getMenuItem();
+public abstract class Plugin {
+
+	protected List<GUIObserver> observers = new ArrayList<GUIObserver>();
+	public void addObserver(GUIObserver dictObs) {
+    	observers.add(dictObs);
+    }
+	
+	public abstract String getKey();
+	public abstract String getName();
+	public abstract String getTooltip();
+	public abstract JPanel getPanel();
+	public abstract ActionListener getAction();
+	public abstract JMenuItem getMenuItem();
 	
 }
