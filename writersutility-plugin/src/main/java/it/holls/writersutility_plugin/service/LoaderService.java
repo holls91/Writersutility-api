@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
 
+import it.holls.writersutility.observer.GUIObserver;
 import it.holls.writersutility_plugin.plugin.Plugin;
 
 public final class LoaderService {

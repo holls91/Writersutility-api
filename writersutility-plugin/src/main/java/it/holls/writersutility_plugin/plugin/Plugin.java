@@ -7,7 +7,8 @@ import java.util.List;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import it.holls.writersutility_plugin.service.GUIObserver;
+import it.holls.writersutility.observer.GUIObserver;
+
 
 public abstract class Plugin {
 
